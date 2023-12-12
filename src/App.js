@@ -1,29 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import EmojiSearch from './Components/EmojiSearch'; 
+import Title from './Components/Title';
 function App() {
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search emojis..."
-        value={searchTerm}
-        onChange={handleInputChange}
-      />
-      <div>
-        {filteredEmojis.map((emoji) => (
-          <span
-            key={emoji.title}
-            onClick={() => handleEmojiClick(emoji)}
-            style={{ cursor: 'pointer', margin: '5px' }}
-            title={emoji.title}
-          >
-            {emoji.symbol}
-          </span>
-        ))}
-      </div>
+    <div className="App">
+      <Title/>
+      <EmojiSearch />
     </div>
   );
-};
+}
 
 export default App;

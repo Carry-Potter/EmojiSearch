@@ -1,0 +1,155 @@
+:root {
+    --background-color-brownish: #E4EBF5;
+    --background-color-purple: hsla(259, 36%, 47%, 1);
+    --shadow-scale: 1.1;
+    --letter-spacing: 0.3em;
+    --initial-skew: -40deg;
+    --hover-skew: -10deg;
+    --animation-duration: 0.3s;
+    --shadow-initial-skew: calc(var(--initial-skew) / -2);
+    --shadow-hover-skew: calc(var(--hover-skew) / -2);
+    --background-color: var(--background-color-brownish);
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+    --white: #FFFFFF;
+    --greyLight-1: #E4EBF5;
+    --greyLight-2: #c8d0e7;
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, Tahoma, sans-serif;
+  }
+  
+  .wrapper {
+    text-align: center;
+  }
+  
+  p {
+    color: #ffffff;
+    font-family: 'Avenir Next', 'Helvetica Neue', Helvetica, Tahoma, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  p span {
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 500;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  p span::before,
+  p span::after {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    transform-origin: left top;
+    transition: all ease-out var(--animation-duration);
+    content: attr(data-text);
+  }
+  
+  p span::before {
+    z-index: 1;
+    color: rgba(0, 0, 0, .2);
+    transform: scale(var(--shadow-scale), 1) skew(0deg, var(--shadow-initial-skew));
+  }
+  
+  p span::after {
+    z-index: 2;
+    color: var(--background-color);
+    text-shadow: -1px 0 1px var(--background-color), 1px 0 1px rgba(0, 0, 0, .8);
+    transform: rotateY(var(--initial-skew));
+  }
+  
+  p span:hover::before {
+    transform: scale(var(--shadow-scale), 1) skew(0deg, var(--shadow-hover-skew));
+  }
+  
+  p span:hover::after {
+    transform: rotateY(var(--hover-skew));
+  }
+  
+  p span + span {
+    margin-left: var(--letter-spacing);
+  }
+  
+  @media (min-width: 20em) {
+    p {
+      font-size: 2em;
+    }
+  
+    p span::before,
+    p span::after {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 30em) {
+    p {
+      font-size: 3em;
+    }
+  }
+  
+  @media (min-width: 40em) {
+    p {
+      font-size: 5em;
+    }
+  }
+  
+  @media (min-width: 60em) {
+    p {
+      font-size: 8em;
+    }
+  }
+  
+  .emoji {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .emoji span {
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .form {
+    text-align: center;
+  }
+  
+  .form__input {
+    width: 20.4rem;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    padding-left: 1.4rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+                inset -0.2rem -0.2rem 0.5rem var(--white);
+    background: none;
+    color: var(--greyDark);
+    margin-top: 10px; /* Dodajte razmak iznad inputa po potrebi */
+  }
+  
+  .form__input::placeholder {
+    color: var(--greyLight-3);
+  }
+  
+  .form__input:focus {
+    outline: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
+                -0.2rem -0.2rem 0.5rem var(--white);
+  }
+  
